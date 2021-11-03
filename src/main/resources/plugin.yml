@@ -1,0 +1,11 @@
+name: VoidFall
+version: '${project.version}'
+main: yt.sehrschlecht.voidfall.VoidFall
+api-version: 1.17
+description: Makes you fall from the sky when falling into the void
+commands:
+  voidfall:
+    aliases:
+      - vf
+    permission: voidfall.reload
+    description: Reloads the plugin
