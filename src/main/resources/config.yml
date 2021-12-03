@@ -5,3 +5,4 @@ volume: 1
 pitch: 1
 reset-fall-distance: false #If this is enabled, the fall distance of the player will be reset after teleporting
 cancel-damage: true #If this is enabled, the player will get no void damage.
+change_dimensions: false

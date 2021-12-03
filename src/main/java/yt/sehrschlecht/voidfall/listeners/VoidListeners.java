@@ -1,6 +1,8 @@
 package yt.sehrschlecht.voidfall.listeners;
 
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
+import org.bukkit.World;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -19,6 +21,13 @@ public class VoidListeners implements Listener {
         event.setCancelled(config.shouldCancelDamage());
 
         Location location = player.getLocation().clone();
+        if(config.shouldChangeDimensions()) {
+            if(location.getWorld().getEnvironment().equals(World.Environment.NORMAL)) {
+                location.setWorld(Bukkit.getWorlds().stream().filter(w -> w.getEnvironment().equals(World.Environment.THE_END)).findFirst().orElse(location.getWorld()));
+            } else if(location.getWorld().getEnvironment().equals(World.Environment.THE_END)) {
+                location.setWorld(Bukkit.getWorlds().stream().filter(w -> w.getEnvironment().equals(World.Environment.NORMAL)).findFirst().orElse(location.getWorld()));
+            }
+        }
         location.setY(config.getYHeight());
         player.teleport(location);
 

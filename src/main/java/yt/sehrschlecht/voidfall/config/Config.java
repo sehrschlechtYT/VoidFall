@@ -17,8 +17,9 @@ public class Config {
     private final float pitch;
     private final boolean resetFallDistance;
     private final boolean cancelDamage;
+    private final boolean changeDimensions;
 
-    public Config(int yHeight, boolean enableSound, String sound, float volume, float pitch, boolean resetFallDistance, boolean cancelDamage) {
+    public Config(int yHeight, boolean enableSound, String sound, float volume, float pitch, boolean resetFallDistance, boolean cancelDamage, boolean changeDimensions) {
         this.yHeight = yHeight;
         this.enableSound = enableSound;
         this.sound = sound;
@@ -26,6 +27,7 @@ public class Config {
         this.pitch = pitch;
         this.resetFallDistance = resetFallDistance;
         this.cancelDamage = cancelDamage;
+        this.changeDimensions = changeDimensions;
 
         config = this;
     }
@@ -46,7 +48,8 @@ public class Config {
                 configuration.getLong("volume"),
                 configuration.getLong("pitch"),
                 configuration.getBoolean("reset-fall-distance"),
-                configuration.getBoolean("cancel-damage"));
+                configuration.getBoolean("cancel-damage"),
+                configuration.getBoolean("change_dimensions"));
     }
 
     public int getYHeight() {
@@ -80,5 +83,9 @@ public class Config {
 
     public boolean shouldCancelDamage() {
         return cancelDamage;
+    }
+
+    public boolean shouldChangeDimensions() {
+        return changeDimensions;
     }
 }
